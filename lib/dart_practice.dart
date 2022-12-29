@@ -13,23 +13,25 @@ class Calculator {
 
 void main() {
 
-  Calculator calculator = Calculator();
-  String str = jsonEncode(calculator);
-  print(str);
+  // Calculator calculator = Calculator();
+  // String str = jsonEncode(calculator);
+  // print(str);
 
   // formatToChartTime("20221227162005");
 
-  DateFormat format = DateFormat("hh:mm");
-  int millisecondsOpenTime = 5400000;
-  String dateTime = "20221227162005";
+  // DateFormat format = DateFormat("hh:mm");
+  // int millisecondsOpenTime = 5400000;
+  // String dateTime = "20221227162005";
 
   // print(DateFormat('yyyy-MM-dd hh:mm:ss').parse(dateTime).microsecondsSinceEpoch);
   // print(DateFormat('yyyy-MM-dd hh:mm').parse(dateTime).microsecondsSinceEpoch);
 
-  DateTime dt = yyyyMMddHHmmss2DateTime(dateTime);
+  // String dateTime1 = "202212231501";
+  String dateTime1 = "20221223150101";
+  DateTime dt = yyyyMMddHHmm2DateTime(dateTime1);
   print(dt.millisecondsSinceEpoch/1000);
   print(dt.millisecondsSinceEpoch/1000 - dt.second);
-  print(DateFormat('yyyy-MM-dd hh:mm').format(dt));
+  // print(DateFormat('yyyyMMdd-HHmmss').format(dt));
 
   // DateFormat formatDay = DateFormat("yyyyMMdd");
   // formatDay.parse(dateTime);
@@ -72,7 +74,16 @@ void main() {
 }
 
 // String date = '20221227162005';
-DateTime yyyyMMddHHmmss2DateTime(String date) {
+
+DateTime string2DateTime(String date) {
+  String dateWithT = date.substring(0, 8) + 'T' + date.substring(8);
+  DateTime dateTime = DateTime.parse(dateWithT);
+  print(dateTime.toString());
+  return dateTime;
+}
+
+// String data = 202212231301
+DateTime yyyyMMddHHmm2DateTime(String date) {
   String dateWithT = date.substring(0, 8) + 'T' + date.substring(8);
   DateTime dateTime = DateTime.parse(dateWithT);
   return dateTime;
